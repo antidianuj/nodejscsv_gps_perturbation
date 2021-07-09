@@ -54,10 +54,17 @@ fs.createReadStream('Sensor_Data1.csv')
           var R3=r3/(keta1*Maxy);
           var R4=r4/(keta2*Maxy);
 
-         latty=(1-R1)*parseFloat(latty)+R2;
-         longy=(1-R3)*parseFloat(longy)+R4;
+        //..........................Linear Transformation
+        //  latty=(1-R1)*parseFloat(latty)+R2;
+        //  longy=(1-R3)*parseFloat(longy)+R4;
+        //..........................Linear Transformation
 
-         longitude_pert_data.push(longy);
+         //........................... Randomization
+         latty=parseFloat(latty)+getRandom(-2,2);
+         longy=parseFloat(longy)+getRandom(-2,2);
+         //........................... Randomization
+
+        longitude_pert_data.push(longy);
         latitude_pert_data.push(latty);
 
          csvrow[3]=latty;
