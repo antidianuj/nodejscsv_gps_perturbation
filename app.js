@@ -34,10 +34,23 @@ fs.createReadStream('Sensor_Data1.csv')
           reference_data.push(indexer);
           indexer=indexer+1;
 
-          var s1=username.substring(0);
-          var s2=username.substring(1);
-          var s3=username.substring(2);
-          var s4=username.substring(3);
+          var lengther=username.length;
+           
+
+           //.................Concretness
+          // var s1=username.substring(0);
+          // var s2=username.substring(1);
+          // var s3=username.substring(2);
+          // var s4=username.substring(3);
+          //..................Concreteness
+
+
+          //...................Randomization
+          var s1=username.substring(Math.floor(Math.random() * (lengther- 1 + 1) + 0));
+          var s2=username.substring(Math.floor(Math.random() * (lengther- 1 + 1) + 0));
+          var s3=username.substring(Math.floor(Math.random() * (lengther- 1 + 1) + 0));
+          var s4=username.substring(Math.floor(Math.random() * (lengther- 1 + 1) + 0));
+          //...................Randomization
 
           var r1=parseFloat(s1.charCodeAt(0));
           var r2=parseFloat(s2.charCodeAt(0));
@@ -55,14 +68,14 @@ fs.createReadStream('Sensor_Data1.csv')
           var R4=r4/(keta2*Maxy);
 
         //..........................Linear Transformation
-        //  latty=(1-R1)*parseFloat(latty)+R2;
-        //  longy=(1-R3)*parseFloat(longy)+R4;
+         latty=(1-R1)*parseFloat(latty)+R2;
+         longy=(1-R3)*parseFloat(longy)+R4;
         //..........................Linear Transformation
 
-         //........................... Randomization
-         latty=parseFloat(latty)+getRandom(-2,2);
-         longy=parseFloat(longy)+getRandom(-2,2);
-         //........................... Randomization
+         //........................... Simple Randomization
+        //  latty=parseFloat(latty)+getRandom(-2,2);
+        //  longy=parseFloat(longy)+getRandom(-2,2);
+         //........................... Simple Randomization
 
         longitude_pert_data.push(longy);
         latitude_pert_data.push(latty);
