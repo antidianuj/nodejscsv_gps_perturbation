@@ -1,6 +1,7 @@
 var fs = require('fs'); 
 var parse = require('csv-parse');
 var { plot,stack, clear, Plot,Layout }=require('nodeplotlib');
+var crypto = require('crypto');
 
 var latitude_data = [];
 var longitude_data=[];
@@ -67,10 +68,10 @@ fs.createReadStream('Sensor_Data1.csv')
           var R3=r3/(keta1*Maxy);
           var R4=r4/(keta2*Maxy);
 
-        //..........................Linear Transformation
+        //..........................^^^^^Linear Transformation
          latty=(1-R1)*parseFloat(latty)+R2;
          longy=(1-R3)*parseFloat(longy)+R4;
-        //..........................Linear Transformation
+        //..........................^^^^Linear Transformation
 
          //........................... Simple Randomization
         //  latty=parseFloat(latty)+getRandom(-2,2);
@@ -82,6 +83,7 @@ fs.createReadStream('Sensor_Data1.csv')
 
          csvrow[3]=latty;
          csvrow[4]=longy;
+         csvrow[0]=crypto.createHash('sha256').update(username).digest('hex');
         }
 
         //***********************************csvrow manipulation*******************************
